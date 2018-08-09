@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- v-for で配列に要素をマッピング -->
+  <ul id="example-1">
+    <li v-for="item in items">
+      {{ item.message }}
+    </li>
+  </ul>
+
+  <!-- 配列のインデックスを任意の２つ目の引数としてサポート -->
+  <ul id="example-2">
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+  </ul>
+
+  <!-- in の代わりに of を使用することも可能 -->
+  <ul id="example-3">
+    <li v-for="item of items">
+      {{ item.message }}
+    </li>
+  </ul>
+
+  <!-- オブジェクトのv -for -->
+  <ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+
+    <!-- 3つめの引数として index が提供される -->
+    <li v-for="(value, key, index) in object">
+      {{ index }}. {{ key }}: {{ value }}
+    </li>
+  </ul>
+
+  <!-- key の設定 -->
+  <div id="v-for-key">
+    <div v-for="item in items" :key="item.id">
+      {{ item.message }}
+    </div>
+  </div>
+
+  <!-- 配列の変更 -->
+  <div id="vm1">
+    <div v-for="item in items">
+      {{ item }}
+    </div>
+  </div>
+
+  <!-- オブジェクトの変更検出の注意 -->
+  <div id="vm2">
+    <div v-for="value in a">
+      {{ value }}
+    </div>
+  </div>
+
+    <!-- ネストされたオブジェクトにリアクティブなプロパティを追加 -->
+  <div id="vm3">
+    <div v-for="(value, key) in userProfile">
+      {{ key }}: {{ value }}
+    </div>
+  </div>
+
+   <!--フィルタされた結果の表示-->
+  <div id="vm4">
+    <ul></ul>
+    <li v-for="n in evenNumbers">{{ n }}</li>
+    <li v-for="n in even(numbers)">{{ n }}</li>
+  </div>
+
+   <!--範囲つき v-for-->
+  <div  id="vm5">
+    <span v-for="n in 10">{{ n }}</span>
+  </div>
+
+  <!-- template での v-for -->
+  <div id="vm6">
+    <ul>
+      <template v-for="item in items">
+        <li>{{ item.msg }}</li>
+        <li class="divider" role="presentation"></li>
+      </template>
+    </ul>
+  </div>
+
+  <!-- v-for と v-if -->
+  <div id="vm7">
+    <ul>
+      <li v-for="todo in todos" v-if="!todo.isComplete">
+        {{ todo }}
+      </li>
+    </ul>
+  </div>
+
+  <div id="vm8">
+    <ul v-if="todos.length">
+      <li v-for="todo in todos">
+        {{ todo }}
+      </li>
+    </ul>
+    <p v-else>No todos left!</p>
+  </div>
+
+  <!-- コンポーネントと v-for -->
+  <div id="todo-list-example">
+    <form v-on:submit.prevent="addNewTodo">
+      <label for="new-todo">Add a todo</label>
+      <input
+        v-model="newTodoText"
+        id="new-todo"
+        placeholder="E.g. Feed the cat"
+      >
+      <button>Add</button>
+    </form>
+    <ul>
+      <li
+        is="todo-item"
+        v-for="(todo, index) in todos"
+        v-bind:key="todo.id"
+        v-bind:title="todo.title"
+        v-on:remove="todos.splice(index, 1)"
+      ></li>
+    </ul>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
