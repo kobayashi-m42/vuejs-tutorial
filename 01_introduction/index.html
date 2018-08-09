@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- 宣言的レタリング -->
+  <div id="app">
+    {{ message }}
+  </div>
+
+  <div id="app-2">
+      <span v-bind:title="message">
+        Hover your mouse over me for a few seconds
+        to see my dynamically bound title!
+      </span>
+  </div>
+  <!-- 宣言的レタリング -->
+
+
+<script src="index.js"></script>
+</body>
+</html>
