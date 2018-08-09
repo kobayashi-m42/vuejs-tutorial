@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<!-- クラスのバインディング -->
+  <!-- オブジェクト構文 -->
+  <div id="app-1">
+    <div class="static"
+         v-bind:class="{ active: isActive, 'text-danger' : hasError }">Object Syntax
+    </div>
+  </div>
+  <div id="app-2">
+    <div v-bind:class="classObject">Object Syntax</div>
+  </div>
+
+  <!-- 配列構文 -->
+  <div id="app-3">
+    <div v-bind:class="[{ active: isActive }, errorClass]">Array Syntax</div>
+  </div>
+
+  <!-- コンポーネント -->
+  <div id="app-4">
+    <my-component class="baz boo"></my-component>
+    <my-component v-bind:class="{ active: isActive}"></my-component>
+  </div>
+<!-- クラスのバインディング -->
+
+<!-- インラインスタイルのバインディング -->
+  <!-- オブジェクト構文 -->
+  <div id="app-5">
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">Object Syntax</div>
+    <div v-bind:style="styleObject">Object Syntax</div>
+  </div>
+
+  <!-- 配列構文 -->
+  <div id="app−6">
+    <div v-bind:style="[styles, moreStyles]"></div>
+  </div>
+<!-- インラインスタイルのバインディング -->
+
+  <style>
+    .active {
+      font-weight: bold;
+    }
+    .text-danger {
+      color: red;
+    }
+  </style>
+  <script src="index.js"></script>
+</body>
+</html>
