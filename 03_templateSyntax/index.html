@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- テキスト -->
+    <p>Message: {{ msg }}</p>
+    <p v-once>This will never change: {{ msg }}</p>
+
+    <!-- 生のHTML -->
+    <p>Using mustaches: {{ rawHTML }}</p>
+    <p>Using v-html directive: <span v-html="rawHTML"></span></p>
+
+    <!-- 属性 -->
+    <div v-bind:id="dynamicId"><p>id: {{ dynamicId }}</p></div>
+    <div>Button disabled : {{ isButtonDisabled }}</div>
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+
+    <!-- JavaScript式の利用 -->
+    <p>number + 1 = {{ number + 1}}</p>
+    <p>ok ? {{ ok ? 'YES' : 'NO' }}</p>
+    <p>Massage: {{ message }}</p>
+    <p>message.split('').reverse().join('') -> {{ message.split('').reverse().join('') }}</p>
+
+    <!-- ディレクティブ -->
+    <p>seen : {{ seen }}</p>
+    <p v-if="seen">Now you see me</p>
+
+    <!-- 引数 -->
+    <p><a v-bind:href="url">{{ url }}</a></p>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
