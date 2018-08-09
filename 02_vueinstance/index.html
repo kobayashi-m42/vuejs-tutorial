@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app-1">
+    <p>{{ foo }}</p>
+    <!-- これは `foo` を更新しなくなります! -->
+    <button v-on:click="foo = 'baz'">Change it</button>
+  </div>
+  <div id="app-2">
+    <p>{{ a }}</p>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
