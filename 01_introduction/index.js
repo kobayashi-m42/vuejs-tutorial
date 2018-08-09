@@ -32,3 +32,22 @@ const app4 = new Vue({
 });
 // コンソールで以下を追加するとリストに追加されることを確認できる
 // app4.todos.push({ text: 'New item' })
+
+const app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+});
+
+const app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+});

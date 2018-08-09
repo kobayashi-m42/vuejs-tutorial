@@ -34,6 +34,18 @@
   </div>
   <!-- 条件分岐とループ -->
 
+  <!-- ユーザー入力の制御 -->
+  <div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+
+  <div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+  </div>
+  <!-- ユーザー入力の制御 -->
+
 <script src="index.js"></script>
 </body>
 </html>
