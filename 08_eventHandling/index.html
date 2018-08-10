@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!--  イベントの購読 -->
+  <div id="example-1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+  </div>
+
+  <!-- メソッドイベントハンドラ -->
+  <div id="example-2">
+    <button v-on:click="greet">Greet</button>
+  </div>
+
+  <!-- インラインメソッドハンドラ -->
+  <div id="example-3">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+      Submit
+    </button>
+  </div>
+
+  <!-- イベント修飾子 -->
+  <div id="example-4">
+    <button v-on:click.once="say('Only once')">Only once</button>
+  </div>
+
+  <!-- キー修飾子 -->
+  <div id="example-5">
+    <input v-on:keyup.enter="enter()">
+  </div>
+
+  <!-- 自動キー修飾子 -->
+  <div id="example-6">
+    <input @keyup.delete="deleteMessage">
+  </div>
+
+  <!-- システムキー修飾子 -->
+  <div id="example-7">
+    <div @click.shift="doSomething">Do something</div>
+  </div>
+
+  <!-- .exact 修飾子 -->
+  <div id="example-8">
+    <!-- これは Alt に加えて Ctrl や Shift キーが押されていても発行されます -->
+    <button @click.alt="onClick">Alt に加えて Ctrl や Shift キーが押されていても発行されます</button>
+
+    <!-- これは Alt キーが押され、他のキーが押されてないときだけ発行されます -->
+    <button @click.alt.exact="onCtrlClick">Alt キーが押され、他のキーが押されてないときだけ発行されます</button>
+
+    <!-- これは システム修飾子が押されてないときだけ発行されます -->
+    <button @click.exact="onClickNoSystemModifiers">システム修飾子が押されてないときだけ発行されます</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
