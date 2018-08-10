@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- テキスト -->
+  <div id="example-1">
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+  </div>
+
+  <!-- 複数行テキスト -->
+  <div id="example-2">
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ message }}</p>
+    <br>
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+  </div>
+
+  <!-- チェックボックス -->
+  <div id="example-3">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <br>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+  </div>
+
+  <!-- ラジオ -->
+  <div id="example-4">
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="one">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+  </div>
+
+  <!-- 選択 -->
+  <div id="example-5">
+    <!-- 単体の選択 -->
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <div id="example-6">
+    <!-- 複数の選択 -->
+    <select v-model="selected" multiple style="width: 50px">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <div id="example-7">
+    <!-- 動的オプション -->
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <!-- 値のバインディング-->
+  <div id="example-8">
+    <!-- チェックボックス -->
+    <input
+      type="checkbox"
+      v-model="toggle"
+      true-value="yes"
+      false-value="no"
+    >
+    <span>vm.toggle : {{ toggle }}</span>
+    <br>
+
+    <!-- ラジオ -->
+    <input type="radio" v-model="pick" v-bind:value="a">
+    <span>vm.pick : {{ pick }}</span>
+    <br>
+
+    <!-- 選択オプション-->
+    <select v-model="selected">
+      <!-- インラインオブジェクトリテラル -->
+      <option v-bind:value="{ number: 123 }">123</option>
+      <option v-bind:value="{ number: 456 }">456</option>
+    </select>
+    <span>vm.selected.number : {{ selected.number }}</span>
+  </div>
+
+  <!-- .trim 修飾子 -->
+  <div id="example-9">
+    <input v-model.trim="msg">
+    <span>"{{ msg }}"</span>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
