@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="components-demo">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+
+  <!-- 単一のルート要素 -->
+  <div id="blog-post-demo">
+    <blog-post
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-bind:post="post"
+    ></blog-post>
+  </div>
+
+  <!-- イベントとメッセージを親コンポーネントに送出する -->
+  <div id="blog-posts-events-demo">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+      <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+        v-on:enlarge-text="postFontSize += 0.1"
+      ></blog-post>
+    </div>
+  </div>
+
+  <!-- コンポーネントで v-model を使う -->
+  <div id="custom-input">
+    <custom-input v-model="searchText"></custom-input>
+  </div>
+
+  <!-- スロットによるコンテンツ配信 -->
+  <div id="alert-box">
+    <alert-box>
+      Something bad happened.
+    </alert-box>
+  </div>
+
+  <!-- 動的なコンポーネント -->
+  <div id="dynamic-component-demo" class="demo">
+    <button
+      v-for="tab in tabs"
+      v-bind:key="tab"
+      v-bind:class="['tab-button', { active: currentTab === tab }]"
+      v-on:click="currentTab = tab"
+    >{{ tab }}</button>
+
+    <component
+            v-bind:is="currentTabComponent"
+            class="tab"
+    ></component>
+  </div>
+  <style>
+    .tab-button {
+      padding: 6px 10px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: #f0f0f0;
+      margin-bottom: -1px;
+      margin-right: -1px;
+    }
+    .tab-button:hover {
+      background: #e0e0e0;
+    }
+    .tab-button.active {
+      background: #e0e0e0;
+    }
+    .tab {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+
+  <script src="index.js"></script>
+</body>
+</html>
