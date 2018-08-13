@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- プロパティの形式 -->
+  <div id="example-1">
+    <!-- HTML 内ではケバブケース -->
+    <blog-post post-title="hello!"></blog-post>
+  </div>
+
+  <!-- 静的あるいは動的なプロパティの受け渡し -->
+  <div id="example-2">
+    <prop-types
+            title="My journey with Vue"
+            v-bind:likes="11"
+            v-bind:is-published="false"
+            v-bind:comment-ids="[234, 266, 273]"
+            v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"
+    ></prop-types>
+    ---
+    <br>
+    <prop-types
+            v-bind:title="post.title"
+            v-bind:likes="post.likes"
+            v-bind:is-published="post.isPublished"
+            v-bind:comment-ids="post.commentIds"
+            v-bind:author="post.author"
+    ></prop-types>
+    ---
+    <br>
+    <prop-types
+            v-bind="post"
+    ></prop-types>
+  </div>
+
+  <!-- 単方向のデータフロー -->
+  <div id="example-3">
+    <initial-counter :initial-counter="counter"></initial-counter>
+  </div>
+
+  <!-- プロパティのバリデーション -->
+  <div id="example-4">
+    <my-component v-bind="props"></my-component>
+  </div>
+
+  <!-- 既存の属性への置換とマージ -->
+  <div id="example-5">
+    <!-- type は置換される -->
+    <bootstrap-date-input
+            type="text"
+    ></bootstrap-date-input>
+    <!-- class はマージされる -->
+    <bootstrap-date-input
+            data-date-picker="activated"
+            class="date-picker-theme-dark"
+    ></bootstrap-date-input>
+  </div>
+
+  <!-- 属性の継承の無効化 -->
+  <div id="example-6">
+    inherit : true
+    <inherit-attrs-link
+            src="https://jp.vuejs.org/v2/guide/"
+            href="https://jp.vuejs.org/v2/guide/components-props.html"
+            target="_blank"
+    />
+  </div>
+  <div id="example-7">
+    inherit : false
+    <not-inherit-attrs-link
+            src="https://jp.vuejs.org/v2/guide/"
+            href="https://jp.vuejs.org/v2/guide/components-props.html"
+            target="_blank"
+    />
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
