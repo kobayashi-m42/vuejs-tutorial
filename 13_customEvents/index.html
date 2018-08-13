@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <!-- v-model を使ったコンポーネントのカスタマイズ -->
+  <div id="example-1">
+    <base-checkbox v-model="lovingVue"></base-checkbox>
+  </div>
+
+  <!-- コンポーネントにネイティブイベントをバインディング -->
+  <div id="example-2">
+    <!-- .native 修飾子を利用 -->
+    <native-component v-on:click="handleClick"></native-component>
+    <native-component v-on:click.native="handleClick"></native-component>
+  </div>
+
+  <div id="example-3">
+    <!-- 算出プロパティを使用 -->
+    <base-input v-model="inputText"></base-input>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
