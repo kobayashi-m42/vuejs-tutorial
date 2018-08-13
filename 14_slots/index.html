@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vuejs-tutorial</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+  <!-- スロットコンテンツ -->
+  <div id="example-1">
+    <navigation-link url="https://jp.vuejs.org/v2/guide/components-slots.html">
+      <span class="fa fa-user"></span>
+      {{ user.name }} Profile
+      <!-- {{ url }} にアクセスすることはできない-->
+    </navigation-link>
+  </div>
+
+  <!-- 名前付きスロット -->
+  <div id="example-2">
+    <base-layout>
+      <template slot="header">
+        <h1>Here might be a page title</h1>
+      </template>
+
+      <p>A paragraph for the main content.</p>
+      <p>And another one.</p>
+
+      <template slot="footer">
+        <p>Here's some contact info</p>
+      </template>
+    </base-layout>
+
+    <!-- 要素に直接 slot を指定することも可能 -->
+    <base-layout>
+      <h1 slot="header">Here might be a page title</h1>
+
+      <p>A paragraph for the main content.</p>
+      <p>And another one.</p>
+
+      <p slot="footer">Here's some contact info</p>
+    </base-layout>
+  </div>
+
+  <!-- デフォルトのスロットコンテンツ -->
+  <div id="example-3">
+    <default-slot></default-slot>
+    <default-slot>Save</default-slot>
+  </div>
+
+  <!-- スコープ付きスロット -->
+  <div id="example-4">
+    <todo-list v-bind:todos="todos">
+      <template slot-scope="slotProps">
+        <span v-if="slotProps.todo.isComplete">✓</span>
+        {{ slotProps.todo.text }}
+      </template>
+    </todo-list>
+
+    <!-- slot-scope の分割代入 -->
+    <todo-list v-bind:todos="todos">
+      <template slot-scope="{ todo }">
+        <span v-if="todo.isComplete">✓</span>
+        {{ todo.text }}
+      </template>
+    </todo-list>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
