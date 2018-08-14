@@ -3,27 +3,25 @@ const vm = new Vue({
   data: {
     name: 'taguchi',
     newItem: '',
-    todos: [
-      {
-        title: 'task 1',
-        isDone: false
+    todos: []
+  },
+  watch: {
+    todos: {
+      handler: function () {
+        localStorage.setItem('todos', JSON.stringify(this.todos));
       },
-      {
-        title: 'task 2',
-        isDone: false
-      },
-      {
-        title: 'task 3',
-        isDone: true
-      }
-    ]
+      deep: true
+    }
+  },
+  mounted: function() {
+    this.todos = JSON.parse(localStorage.getItem('todos'))
   },
   methods: {
     addItem: function () {
       const item = {
         title: this.newItem,
         isDone: false
-      }
+      };
       this.todos.push(item);
       this.newItem = '';
     },
