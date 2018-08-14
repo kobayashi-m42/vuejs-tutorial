@@ -4,14 +4,27 @@ const vm = new Vue({
     name: 'taguchi',
     newItem: '',
     todos: [
-      'task 1',
-      'task 2',
-      'task 3'
+      {
+        title: 'task 1',
+        isDone: false
+      },
+      {
+        title: 'task 2',
+        isDone: false
+      },
+      {
+        title: 'task 3',
+        isDone: true
+      }
     ]
   },
   methods: {
     addItem: function () {
-      this.todos.push(this.newItem);
+      const item = {
+        title: this.newItem,
+        isDone: false
+      }
+      this.todos.push(item);
       this.newItem = '';
     },
     deleteItem: function (index) {
