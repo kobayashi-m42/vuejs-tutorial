@@ -32,5 +32,13 @@ const vm = new Vue({
         this.todos.splice(index, 1)
       }
     }
+  },
+  computed: {
+    remaining: function () {
+      const items = this.todos.filter(function (todo) {
+        return !todo.isDone;
+      });
+      return items.length;
+    }
   }
 });
