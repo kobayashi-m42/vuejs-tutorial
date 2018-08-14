@@ -9,7 +9,7 @@
 <body>
   <div id="app" class="container">
     <h1>My Todos</h1>
-    <ul>
+    <ul v-if="todos.length">
       <li v-for="(todo, index) in todos">
         <input type="checkbox" v-model="todo.isDone">
         <span :class="{ done: todo.isDone}">
@@ -17,6 +17,9 @@
         </span>
         <span @click="deleteItem(index)" class="command">[x]</span>
       </li>
+    </ul>
+    <ul v-else>
+      <li>Nothing to do, yay!</li>
     </ul>
     <form  @submit.prevent="addItem">
       <input type="text" v-model="newItem">
