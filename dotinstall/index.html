@@ -9,8 +9,9 @@
 <body>
   <div id="app" class="container">
     <h1>
+      <button @click="purge">Purge</button>
       My Todos
-      <span class="info">({{ remaining }}/{{ todos.length }})</span>
+      <span class="info">({{ remaining.length }}/{{ todos.length }})</span>
     </h1>
     <ul v-if="todos.length">
       <li v-for="(todo, index) in todos">
