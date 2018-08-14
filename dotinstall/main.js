@@ -47,7 +47,17 @@ const vm = new Vue({
 });
 
 const likeComponent = Vue.extend({
-  template: '<button>Like</button>>'
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button @click="countUp">Like {{ count }}</button>>',
+  methods: {
+    countUp: function () {
+      this.count += 1;
+    }
+  }
 });
 
 const app2Vm = new Vue({
