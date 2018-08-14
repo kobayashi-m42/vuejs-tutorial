@@ -39,10 +39,11 @@
   <div id="app-2">
     ---
     <br>
-    <like-component message="Like"></like-component>
-    <like-component message="Awesome"></like-component>
-    <like-component message="Great"></like-component>
-    <like-component></like-component>
+    <p>Total Likes: {{ total }}</p>
+    <like-component message="Like" @increment="incrementTotal"></like-component>
+    <like-component message="Awesome" @increment="incrementTotal"></like-component>
+    <like-component message="Great" @increment="incrementTotal"></like-component>
+    <like-component @increment="incrementTotal"></like-component>
   </div>
   <script src="main.js"></script>
 </body>

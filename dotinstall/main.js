@@ -62,6 +62,7 @@ const likeComponent = Vue.extend({
   methods: {
     countUp: function () {
       this.count += 1;
+      this.$emit('increment')
     }
   }
 });
@@ -70,5 +71,13 @@ const app2Vm = new Vue({
   el: '#app-2',
   components: {
     'like-component': likeComponent
+  },
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function () {
+      this.total += 1;
+    }
   }
 });
