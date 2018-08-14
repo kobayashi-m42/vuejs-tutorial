@@ -47,12 +47,18 @@ const vm = new Vue({
 });
 
 const likeComponent = Vue.extend({
+  props: {
+    message: {
+      type: String,
+      default: 'Like'
+    }
+  },
   data: function () {
     return {
       count: 0
     }
   },
-  template: '<button @click="countUp">Like {{ count }}</button>>',
+  template: '<button @click="countUp">{{ message }} {{ count }}</button>>',
   methods: {
     countUp: function () {
       this.count += 1;
