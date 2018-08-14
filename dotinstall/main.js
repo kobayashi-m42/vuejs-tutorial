@@ -45,3 +45,14 @@ const vm = new Vue({
     }
   }
 });
+
+const likeComponent = Vue.extend({
+  template: '<button>Like</button>>'
+});
+
+const app2Vm = new Vue({
+  el: '#app-2',
+  components: {
+    'like-component': likeComponent
+  }
+});
